@@ -18,7 +18,7 @@ void linked_list_traversal(struct Node *ptr){
     }
 }
 //Declearing the function isEmpty
-int isEmpty(struct Node *topr){
+int isEmpty(struct Node *top){
     if (top==NULL)
         return 1;
     else
