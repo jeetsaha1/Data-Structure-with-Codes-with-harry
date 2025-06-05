@@ -88,8 +88,8 @@ int parenthesis_is_change(char * exp){
             {
                 return 0;
             }
-            pop(s);
-            if(!match(stackTop(s),poped_ele)){
+            poped_ele =  pop(s);
+            if(!match(poped_ele,exp[i])){
                 return 0;
             }
         }
@@ -105,7 +105,7 @@ int parenthesis_is_change(char * exp){
     
 }
 int main(){
-    char *exp = "{(1)";
+    char *exp = "(1)";
     if(parenthesis_is_change(exp))
         printf("The parenthesis is matched.");
     else
