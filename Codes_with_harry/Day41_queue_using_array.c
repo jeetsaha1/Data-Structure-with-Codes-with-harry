@@ -8,8 +8,6 @@ struct queue {
     int *arr;    
 };
 
-
-
 int isFull(struct queue * q){
     if(q->r == q->size-1){
         return 1;
