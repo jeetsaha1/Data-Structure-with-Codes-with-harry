@@ -97,7 +97,7 @@ char *infix_to_postfix(char *infix){
             j++;
         }
         else{
-            if(isEmpty(sp)||(infix[i])>precedence(stackTop(sp))){
+            if(isEmpty(sp)||precedence(infix[i])>precedence(stackTop(sp))){
                 push(sp,infix[i]);
                 i++;
             }
