@@ -18,7 +18,7 @@ void init(int arr[],int n){
 }
 
 //Declare the function for the operation
-void hash_function(int *arr1, int n){   //n is the size of the array
+struct hash_table * hash_function(int *arr1, int n){   //n is the size of the array
 
     //Dynamic memory allocation
     struct hash_table * h = (struct hash_table*)malloc(sizeof(struct hash_table));
@@ -40,16 +40,39 @@ void hash_function(int *arr1, int n){   //n is the size of the array
         i++;
         
     }
+   return h;
+}
 
-    for (int i = 0; i < h->size; i++)            //For printing the element of the hash
+void print_element(struct hash_table *h){
+     for (int i = 0; i < h->size; i++)            //For printing the element of the hash
     {
         printf("%d : %d\n",i,h->arr[i]);
     }
-    
-
-
 }
 
+void search_element(struct hash_table * h,int val){
+    for (int i = 0; i < h->size; i++)
+    {
+        if(val == h->arr[i])
+            printf("The element is found");
+        else    
+            printf("The element is not found");
+    }
+    
+}
+
+void delete_element(struct hash_table * h,int val){
+    for (int i = 0; i < h->size; i++)
+    {
+        if(val == h->arr[i]){
+            h->arr[i] = 0;
+            printf("The element is deleted");
+        }
+        else
+            continue;
+    }
+    
+}
 int main(){
     //Initialize the array
     printf("\nEnter the ten elements : \n");
@@ -60,6 +83,10 @@ int main(){
         scanf("%d",&arr[i]);
     }
     
-    hash_function(arr,10);
+    struct hash_table * h = hash_function(arr,10);
+
+    print_element(h);
+    delete_element(h,arr[4]);
+    print_element(h);
     return 0;
 }
