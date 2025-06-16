@@ -63,8 +63,8 @@ void insert(struct Node * root,int key){
         prev->right = new;
 }
 
-struct Node * inorderpredecessor(struct Node * root){
-    root = root->left;
+struct Node * inorderpredecessor(struct Node * root){   
+    root = root->left;      //In order predeccessor is the most right node of the left subtree
     while(root->right!=NULL){
         root= root->right;
     }
@@ -72,7 +72,7 @@ struct Node * inorderpredecessor(struct Node * root){
 }
 
 struct Node * deleteNode(struct Node * root, int value){
-    struct Node * iPre;
+    struct Node * iPre;   // For taking the in Order Predecessor
     if(root==NULL){
         return NULL;
     }
