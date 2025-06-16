@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//For constructing node
 struct Node{
     int key;
     struct Node *left;
@@ -8,12 +9,14 @@ struct Node{
     int height;
 };
 
+//For getting height as function
 int getHeight(struct Node *n){
     if(n==NULL)
         return 0;
     return n->height;
 }
 
+//Creating a node
 struct Node *createNode(int key){
     struct Node *node= (struct Node*)malloc(sizeof(struct Node));
     node->key = key;
@@ -23,6 +26,7 @@ struct Node *createNode(int key){
     return node;
 }
 
+//For calculating the balance factor of a node
 int getBalenceFactor(struct Node * n){
     if (n==NULL)
         return 0;
@@ -34,19 +38,27 @@ int max(int a, int b){
     return a>b ?a:b;
 }
 
+//For right rotation
 struct Node *rightRotate(struct Node *y){
     struct Node * x = y->left;
     struct Node * T2 = x->right;
 
     x->right = y;
-    y->left = T2;
-
-    y->height =max(getHeight(y->right),getHeight(y->left))+1;
-    x->height =max(getHeight(x->right),getHeight(x->left))+1;
-    
+    y->left = T2;                                                             
+                                                                                     
+    y->height =max(getHeight(y->right),getHeight(y->left))+1;                      
+    x->height =max(getHeight(x->right),getHeight(x->left))+1;              
+                                                                           
     return x;
 }
 
+//      y                                  x 
+//     / \                                / \ 
+//    x   T3    --->(right rotation)    T1   y
+//   / \        <---(left rotation)     / \
+//  T1 T2                              T2  T3    
+
+//For right rotation
 struct Node *leftRotate(struct Node *x){
     struct Node * y = x->right;
     struct Node * T2 = y->left;
@@ -60,6 +72,7 @@ struct Node *leftRotate(struct Node *x){
     return y;
 }
 
+//Inserting an element
 struct Node * insert(struct Node *node, int key){
     if(node==NULL)
         return createNode(key);
